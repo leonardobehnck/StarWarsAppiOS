@@ -9,15 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        @State var name: String = ""
+        @State var age: String = ""
+
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            VStack{}
+                
+            
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity) // Preenche toda a tela
+        .background(Color.black)
     }
 }
+
 
 #Preview {
     ContentView()

@@ -13,5 +13,5 @@ struct StarWarsAppApp: App {
         WindowGroup {
             ContentView()
         }
-    }
+    } 
 }
