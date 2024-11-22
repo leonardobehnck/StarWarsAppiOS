@@ -1,28 +1,18 @@
 import SwiftUI
 
 struct PrimaryButton: View {
-    @State var text = "Button"
-    var onClick: () -> Void
-    
+    var text: String
     var body: some View {
-        VStack{
-            Button(action: {onClick()}) {
-                Text(text)
-                    .frame(height: 20)
-                    .font(.headline)
-                    .foregroundColor(.black)
-            }
-        }
-        .padding()
-        .background{
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.app)
-        }
+        Text(text)
+            .frame(height: 25)
+            .padding()
+            .foregroundColor(.black)
+            .background(.app)
     }
 }
 
 #Preview {
     PrimaryButton(
         text: "Button"
-    ) {}
+    )
 }
