@@ -15,14 +15,7 @@ struct CharacterScreen: View {
                     .font(.title)
                     .padding()
             }
-            
-            Spacer()
-            
-            NavigationLink(
-                destination: HomeScreen()
-            ) {
-                PrimaryButton(text: "Voltar")
-            }
+    
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

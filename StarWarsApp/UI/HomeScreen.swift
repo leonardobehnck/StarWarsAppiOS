@@ -16,6 +16,8 @@ struct HomeScreen: View {
                             .padding()
                             .foregroundStyle(.app)
                         
+                        DropdownMenu()
+                        
                         Spacer()
                                                 
                         NavigationLink (
