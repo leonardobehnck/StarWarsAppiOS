@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    var characterList: [String] = ["Luke", "Leia", "Darth Vader", "R2D2"]
     var body: some View {
         TabView {
             NavigationView {
                 VStack {
                     Header()
-                    Divider().frame(height:1).background(.yellow)
                     VStack {
                         Text("Meu segundo App :)")
                             .foregroundStyle(.app)
@@ -16,14 +16,14 @@ struct HomeScreen: View {
                             .padding()
                             .foregroundStyle(.app)
                         
-                        DropdownMenu()
+                        DropdownMenu(characterList: characterList)
                         
                         Spacer()
                                                 
                         NavigationLink (
                             destination: CharacterScreen()
                         ) {
-                            PrimaryButton(text: "Selecionar personagem")
+                            PrimaryButton(text: "Ver detalhes")
                         }
                         Spacer()
                     }

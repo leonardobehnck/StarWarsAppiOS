@@ -4,7 +4,6 @@ struct ContacScreen: View {
     var body: some View {        
         VStack {
             Header()
-            Divider().frame(height:1).background(.app)
             VStack {
                 Text("Contato")
                     .foregroundStyle(.app)
@@ -15,7 +14,7 @@ struct ContacScreen: View {
                     .foregroundStyle(.app)
                     .padding()
                 Card(
-                    title: "leonardo.behnck@gmail.com",
+                    title: "E-mail",
                     link: "mailto:leonardo.behnck@gmail.com",
                     image: "envelope").padding()
                 

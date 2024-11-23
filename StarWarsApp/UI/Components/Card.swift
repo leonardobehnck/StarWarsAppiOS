@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Card: View {
-    var title: String = "leonardo.behnck@gmail.com"
+    var title: String = "Email"
     var link: String = "https://www.linkedin.com/in/leonardo-behnck/"
     var image: String = "mail"
     
@@ -18,6 +18,7 @@ struct Card: View {
                     .foregroundStyle(.app)
             }
             .padding()
+            .frame(maxWidth:250)
             .background(
                 RoundedRectangle(cornerRadius: 10).fill(.white.opacity(0.2))
             )

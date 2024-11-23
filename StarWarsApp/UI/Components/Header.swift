@@ -6,6 +6,7 @@ struct Header: View {
             Image("star-wars-logo")
                 .resizable()
                 .scaledToFit()
+            Divider().frame(height:1).background(.yellow).padding(.top, 25)
         }
         .padding()
         .background(Color.black)
