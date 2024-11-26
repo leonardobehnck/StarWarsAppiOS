@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    var characterList: [String] = ["Luke", "Leia", "Darth Vader", "R2D2"]
+    @StateObject var viewModel = CharacterViewModel()
+    @State private var selectedCharacter: Character? = nil
+    
     var body: some View {
         TabView {
             NavigationView {
@@ -16,27 +18,37 @@ struct HomeScreen: View {
                             .padding()
                             .foregroundStyle(.app)
                         
-                        DropdownMenu(characterList: characterList)
-                        
-                        Spacer()
-                                                
-                        NavigationLink (
-                            destination: CharacterScreen()
-                        ) {
-                            PrimaryButton(text: "Ver detalhes")
+                        if viewModel.listCharacter.isEmpty {
+                            ProgressView("Carregando personagens...")
+                            Spacer()
+                        } else {
+                            DropdownMenu(
+                                characterList: viewModel.listCharacter,
+                                onClick: { character in
+                                    selectedCharacter = character
+                                }
+                            )
+                            
+                            if let selectedCharacter {
+                                NavigationLink(
+                                    destination: CharacterScreen(character: selectedCharacter),
+                                    isActive: .constant(true),
+                                    label: { EmptyView() }
+                                )
+                                .hidden()
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black)
+                    .navigationTitle("Home").navigationBarHidden(true)
+                    .onAppear {
+                        selectedCharacter = nil
+                        viewModel.getCharacter()
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black)
-                .navigationTitle("Home").navigationBarHidden(true)
             }
         }
     }
-}
-
-
-#Preview {
-    HomeScreen()
 }

@@ -2,12 +2,16 @@ import SwiftUI
 
 struct DropdownMenu: View {
     @State private var selectedOption: String = "Selecionar um personagem"
-    var characterList: [String]
+    var characterList: [Character]
+    var onClick: (Character) -> Void
     
     var body: some View {
         Menu {
-            ForEach(characterList, id: \.description) { character in
-                Button(character, action: { selectedOption = character })
+            ForEach(characterList, id: \.name) { character in
+                Button(character.name, action: {
+                    selectedOption = character.name
+                    onClick(character)
+                })
             }
         } label: {
             Label(selectedOption, systemImage: "chevron.down")
@@ -19,10 +23,4 @@ struct DropdownMenu: View {
         }
         .transition(.move(edge: .bottom))
     }
-}
-
-#Preview {
-    DropdownMenu(
-        characterList: ["Goku", "Vegeta", "Trunks"]
-    )
 }

@@ -3,6 +3,7 @@ import SwiftUI
 struct CharacterScreen: View {
     @Environment(\.dismiss) private var dismiss
     @State var isFavorite: Bool = false
+    var character: Character
     
     var body: some View {
         @State var name: String = ""
@@ -16,9 +17,27 @@ struct CharacterScreen: View {
                         .font(.title)
                         .padding()
                     Spacer()
+                    Image(systemName: "star").foregroundStyle(.app).padding()
+                }
                 
-                    Image(systemName: "star").foregroundStyle(.app)
-
+                VStack {
+                    List {
+                        Section(header: Text("Informações Básicas")) {
+                            DetailRow(label: "Nome", value: character.name)
+                            DetailRow(label: "Altura", value: character.height)
+                            DetailRow(label: "Peso", value: character.mass)
+                            DetailRow(label: "Cor do Cabelo", value: character.hairColor)
+                        }
+                        
+                        Section(header: Text("Outras Informações")) {
+                            DetailRow(label: "Cor da Pele", value: character.skinColor)
+                            DetailRow(label: "Cor dos Olhos", value: character.eyeColor)
+                            DetailRow(label: "Ano de Nascimento", value: character.birthYear)
+                            DetailRow(label: "Gênero", value: character.gender)
+                            DetailRow(label: "Planeta Natal", value: character.homeworld)
+                        }
+                    }
+                    .listStyle(InsetGroupedListStyle())
                 }.padding()
             }
             Spacer()
@@ -29,5 +48,16 @@ struct CharacterScreen: View {
 }
 
 #Preview {
-    CharacterScreen()
+    CharacterScreen(character: Character(
+        name: "Luke Skywalker",
+        height: "1.72m",
+        mass: "73kg",
+        hairColor: "Blond",
+        skinColor: "Fair",
+        eyeColor: "Blue",
+        birthYear: "19BBY",
+        gender: "Male",
+        homeworld: "Tatooine"
+        )
+    )
 }
