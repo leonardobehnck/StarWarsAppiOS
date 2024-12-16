@@ -32,7 +32,6 @@ struct HomeScreen: View {
                             if let selectedCharacter {
                                 NavigationLink(
                                     destination: CharacterScreen(character: selectedCharacter),
-                                    isActive: .constant(true),
                                     label: { EmptyView() }
                                 )
                                 .hidden()
